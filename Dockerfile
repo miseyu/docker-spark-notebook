@@ -1,4 +1,4 @@
-FROM miseyu/docker-spark-kafka-streaming
+FROM miseyu/docker-spark-streaming
 
 # Pip
 RUN apt-get -y update && \
