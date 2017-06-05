@@ -1,10 +1,12 @@
-FROM jupyter/base-notebook
+FROM miseyu/docker-spark-kafka-streaming
 
-USER root
+# Pip
+RUN apt-get -y update && \
+    apt-get -y install python3-pip && \
+    pip3 install --upgrade pip
 
 # Notebook
-RUN rm -rf /var/lib/apt/lists/lock
-RUN rm -rf /var/lib/dpkg/lock
+RUN pip --no-cache-dir install jupyter
 COPY ./toree-0.2.0.dev1.tar.gz /tmp/
 RUN pip --no-cache-dir install /tmp/toree-0.2.0.dev1.tar.gz && \
     jupyter toree install
